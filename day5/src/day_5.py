@@ -1,9 +1,24 @@
+import re
+
+
 def get_nice_strings_counter(words):
     counter = 0
     for word in words:
-        if is_string_nice(word):
+        if is_string_nice_part_two(word):
             counter += 1
     return counter
+
+
+def is_string_nice_part_two(word):
+    return has_pair(word) and has_letter_between_same_characters(word)
+
+
+def has_pair(word):
+    return bool(re.search(r"(.{2})\w*(\1+)", word))
+
+
+def has_letter_between_same_characters(word):
+    return bool(re.search(r"(.)(.)(\1+)", word))
 
 
 def is_string_nice(word):
