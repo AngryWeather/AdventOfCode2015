@@ -19,11 +19,11 @@ def light_lights(instruction):
         while j <= end_x:
             match command:
                 case "on":
-                    grid[i][j] = 1
+                    grid[i][j] += 1
                 case "off":
-                    grid[i][j] = 0
+                    grid[i][j] -= 1 if grid[i][j] > 0 else 0
                 case "toggle":
-                    grid[i][j] ^= 1
+                    grid[i][j] += 2
             j += 1
 
         i += 1
@@ -33,7 +33,7 @@ def light_lights(instruction):
 def get_count(instructions):
     for instruction in instructions:
         light_lights(instruction)
-    return (sum(n.count(1) for n in grid))
+    return (sum(map(sum, grid)))
 
 
 if __name__ == "__main__":
