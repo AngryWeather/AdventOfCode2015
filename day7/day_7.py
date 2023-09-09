@@ -38,7 +38,7 @@ def find_signal(signal, wires, input):
 
 
 if __name__ == "__main__":
-    wires = {}
+    wires = {'b': np.uint16(956)}
     input = []
 
     with open("input.txt", "r") as f:
