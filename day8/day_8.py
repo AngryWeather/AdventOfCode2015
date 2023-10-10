@@ -1,6 +1,10 @@
 import re
 
 
+def evaluate_escaped_word(word):
+    return count_escaped_characters(word) - count_characters_of_code(word)
+
+
 def evaluate_word(word):
     return count_characters_of_code(word) - count_characters_in_string(word)
 
@@ -8,13 +12,24 @@ def evaluate_word(word):
 def count_words(words):
     sum = 0
     for word in words:
-        sum += evaluate_word(word)
+        sum += evaluate_escaped_word(word)
 
     return sum
 
 
 def count_characters_of_code(word):
     return len(word)
+
+
+def count_escaped_characters(word):
+    count = 0
+    quotes_count = 2
+    r = re.compile(r'(\\|")')
+
+    count = len(re.findall(r, word)) + len(word) + quotes_count
+    # quotes_count accounts for enclosing quotes that remain unescaped
+
+    return count
 
 
 def count_characters_in_string(word):
