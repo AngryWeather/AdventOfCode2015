@@ -126,7 +126,7 @@ if __name__ == "__main__":
     node_names = [node_name.get_id() for node_name in g.get_vertices()]
 
     perms = list(permutations(node_names))
-    min_distance = 0
+    max_distance = 0
 
     distances = []
     for perm in perms:
@@ -138,6 +138,6 @@ if __name__ == "__main__":
                                                   g.get_vertex(j), g.get_vertex(perm[i+1]))
         distances.append(current_distance)
         # print(distances)
-        min_distance = min(distances)
+        max_distance = max(distances)
 
-    print("min: ", min_distance)
+    print("max: ", max_distance)
