@@ -1,8 +1,9 @@
 from collections import Counter
 
-if __name__ == "__main__":
+
+def solution():
     input = list(str(3113322113))
-    iterations = 40
+    iterations = 50
     result = ""
     current = 0
     j = 0
@@ -32,3 +33,6 @@ if __name__ == "__main__":
         result = ""
 
     print("length: ", len(res))
+
+
+solution()
