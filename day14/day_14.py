@@ -10,6 +10,7 @@ if __name__ == "__main__":
     seconds = 0
     reindeers = {}
     reindeer_counter = {}
+    scores = {}
 
     for i in input:
         i = i.split()
@@ -35,4 +36,14 @@ if __name__ == "__main__":
                     reindeer_counter[k][0] = reindeers[k][1]
 
         seconds += 1
-    print(max(distance.values()))
+        current_max = max(distance.values())
+        d = [k for k, v in distance.items() if v == current_max]
+
+        for r in d:
+            if r not in scores:
+                scores[r] = 0
+                scores[r] += 1
+            else:
+                scores[r] += 1
+
+    print(max(scores.values()))
